@@ -798,7 +798,7 @@ namespace boost { namespace polygon{
         polygon_90_set_data<Unit> psTmp(that.orient_);
         psTmp.insert(polys[i]);
         psTmp.clean();
-        touch_90_operation<Unit>::populateTouchSetData(tsd, psTmp.data_, i+1);
+        touch_90_operation<Unit>::populateTouchSetData(tsd, psTmp.data_, static_cast<int>(i+1));
       }
       touch_90_operation<Unit>::performTouch(graph, tsd);
       clear();

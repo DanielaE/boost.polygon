@@ -1103,7 +1103,7 @@ namespace polygon_formation {
 
   template <typename Unit>
   inline unsigned int PolyLine<Unit>::numSegments() const {
-    return ptdata_.size();
+    return static_cast<unsigned int>(ptdata_.size());
   }
 
   template <typename Unit>
@@ -1375,7 +1375,7 @@ namespace polygon_formation {
     }
     //the vector contains the coordinates of the linked list of PolyLines in the correct order
     //first element is supposed to be the size
-    outVec[size] = outVec.size() - 1 - size;  //number of coordinates in vector
+    outVec[size] = static_cast<int>(outVec.size() - 1 - size);  //number of coordinates in vector
     //assert outVec[size] % 2 == 0 //it should be even
     //make the size negative for holes
     outVec[size] *= (isHole ? -1 : 1);
@@ -1391,7 +1391,7 @@ namespace polygon_formation {
     }else{
       //reverse order
       //do not reserve because we expect outVec to be large enough already
-      for(int i = ptdata_.size() - 1; i >= 0; --i){
+      for(int i = static_cast<int>(ptdata_.size()) - 1; i >= 0; --i){
         outVec.push_back(ptdata_[i]);
       }
       //NT didn't know about this version of the API....
@@ -1443,7 +1443,7 @@ namespace polygon_formation {
     *(at1->getOtherActiveTail()) = ActiveTail(at1->getOtherTail(), at2->getOtherActiveTail());
     *(at2->getOtherActiveTail()) = ActiveTail(at2->getOtherTail(), at1->getOtherActiveTail());
 
-    int accumulate = at2->getPolyLineSize() + at1->getPolyLineSize();
+    int accumulate = static_cast<int>(at2->getPolyLineSize() + at1->getPolyLineSize());
     (at1->getOtherActiveTail())->setPolyLineSize(accumulate);
     (at2->getOtherActiveTail())->setPolyLineSize(accumulate);
 
@@ -1484,7 +1484,7 @@ namespace polygon_formation {
     *(at1->getOtherActiveTail()) = ActiveTail<Unit>(at1->getOtherTail(), at2->getOtherActiveTail());
     *(at2->getOtherActiveTail()) = ActiveTail<Unit>(at2->getOtherTail(), at1->getOtherActiveTail());
 
-    int accumulate = at2->getPolyLineSize() + at1->getPolyLineSize();
+    int accumulate = static_cast<int>(at2->getPolyLineSize() + at1->getPolyLineSize());
     (at1->getOtherActiveTail())->setPolyLineSize(accumulate);
     (at2->getOtherActiveTail())->setPolyLineSize(accumulate);
 

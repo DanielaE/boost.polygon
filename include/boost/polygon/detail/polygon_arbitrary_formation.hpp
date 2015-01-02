@@ -1391,8 +1391,8 @@ namespace boost { namespace polygon{
       std::pair<Point, int> returnCount(Point(0, 0), 0);
       int i_size_less_1 = (int)(incoming.size()) -1;
       int c_size_less_1 = (int)(counts.size()) -1;
-      int i_size = incoming.size();
-      int c_size = counts.size();
+      int i_size = static_cast<int>(incoming.size());
+      int c_size = static_cast<int>(counts.size());
 
       bool have_vertical_tail_from_below = false;
       if(c_size &&
@@ -2336,8 +2336,8 @@ namespace boost { namespace polygon{
       std::pair<Point, int> returnCount(Point(0, 0), 0);
       int i_size_less_1 = (int)(incoming.size()) -1;
       int c_size_less_1 = (int)(counts.size()) -1;
-      int i_size = incoming.size();
-      int c_size = counts.size();
+      int i_size = static_cast<int>(incoming.size());
+      int c_size = static_cast<int>(counts.size());
 
       bool have_vertical_tail_from_below = false;
       if(c_size &&
