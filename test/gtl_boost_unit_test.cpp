@@ -902,7 +902,7 @@ int testPropertyMerge() {
   std::vector<polygon_90_with_holes_data<int> > polywhs;
   result[key].get(polywhs);
   std::cout << polys.size() << std::endl;
-  return result.size();
+  return static_cast<int>(result.size());
 }
 
 bool testPolygonWithHoles() {
@@ -2262,7 +2262,7 @@ typedef boost::polygon::polygon_90_concept GTLPolygonConcept;
 typedef boost::polygon::point_data<intDC> GTLPoint;
 inline void PrintPolygon(const GTLPolygon&);
 inline GTLPolygon CreateGTLPolygon(const int*, size_t); 
-int test_new_polygon_formation(int argc, char** argv){
+int test_new_polygon_formation(int, char**){
    //                                               //
    // Sub-Test-1: do a Boolean and call the new get //
    //                                               //
@@ -2392,7 +2392,7 @@ int test_new_polygon_formation(int argc, char** argv){
  * instead of 2. So make sure we don't get a 6 vertex
  * polygon when the threshold is 4 and 6.
  */
-int test_new_polygon_formation_marginal_threshold(int argc, char**){
+int test_new_polygon_formation_marginal_threshold(int, char**){
    std::vector<GTLPoint> pts;
    GTLPolygon polygon;
    GTLPolygonSet pset;
@@ -2407,7 +2407,7 @@ int test_new_polygon_formation_marginal_threshold(int argc, char**){
       pset.get(result, i ? 4 : 6);
       double gold_area = 175, plat_area = 0;
       for(size_t i=0; i<result.size(); i++){
-         if(result[i].size() > (i ? 4 : 6) ){
+         if(result[i].size() > (i ? 4u : 6u) ){
             size_t expected = i ? 4 : 6;
             std::cerr << "FAILED: Expecting no more than " <<
                expected << " vertices" << std::endl;

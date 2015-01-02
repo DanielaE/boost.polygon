@@ -505,20 +505,20 @@ namespace boost { namespace polygon{
         if(is_vertical(he1)) {
           if(is_vertical(he2)) return false;
           y_high = evalAtXforY(he1.first.get(HORIZONTAL), he2.first, he2.second);
-          Unit y = convert_high_precision_type<Unit>(y_high);
-          if(y_high < (high_precision)y) --y;
-          if(contains(rect1.get(VERTICAL), y, true)) {
-            intersection = Point(he1.first.get(HORIZONTAL), y);
+          Unit y_ = convert_high_precision_type<Unit>(y_high);
+          if(y_high < (high_precision)y) --y_;
+          if(contains(rect1.get(VERTICAL), y_, true)) {
+            intersection = Point(he1.first.get(HORIZONTAL), y_);
             return true;
           } else {
             return false;
           }
         } else if(is_vertical(he2)) {
           y_high = evalAtXforY(he2.first.get(HORIZONTAL), he1.first, he1.second);
-          Unit y = convert_high_precision_type<Unit>(y_high);
-          if(y_high < (high_precision)y) --y;
-          if(contains(rect2.get(VERTICAL), y, true)) {
-            intersection = Point(he2.first.get(HORIZONTAL), y);
+          Unit y_ = convert_high_precision_type<Unit>(y_high);
+          if(y_high < (high_precision)y) --y_;
+          if(contains(rect2.get(VERTICAL), y_, true)) {
+            intersection = Point(he2.first.get(HORIZONTAL), y_);
             return true;
           } else {
             return false;
