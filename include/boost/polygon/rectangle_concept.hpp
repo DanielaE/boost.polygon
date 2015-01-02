@@ -969,9 +969,9 @@ namespace boost { namespace polygon{
   scale_up(rectangle_type& rectangle,
            typename coordinate_traits<typename rectangle_coordinate_type<rectangle_type>::type>::unsigned_area_type factor) {
     typename rectangle_interval_type<rectangle_type>::type h = horizontal(rectangle);
-    horizontal(rectangle, scale_up(h, factor));
+    horizontal(rectangle, scale_up(h, static_cast<int>(factor)));
     typename rectangle_interval_type<rectangle_type>::type v = vertical(rectangle);
-    vertical(rectangle, scale_up(v, factor));
+    vertical(rectangle, scale_up(v, static_cast<int>(factor)));
     return rectangle;
   }
 
@@ -983,9 +983,9 @@ namespace boost { namespace polygon{
   scale_down(rectangle_type& rectangle,
              typename coordinate_traits<typename rectangle_coordinate_type<rectangle_type>::type>::unsigned_area_type factor) {
     typename rectangle_interval_type<rectangle_type>::type h = horizontal(rectangle);
-    horizontal(rectangle, scale_down(h, factor));
+    horizontal(rectangle, scale_down(h, static_cast<int>(factor)));
     typename rectangle_interval_type<rectangle_type>::type v = vertical(rectangle);
-    vertical(rectangle, scale_down(v, factor));
+    vertical(rectangle, scale_down(v, static_cast<int>(factor)));
     return rectangle;
   }
 

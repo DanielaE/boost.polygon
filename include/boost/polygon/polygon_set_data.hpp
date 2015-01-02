@@ -196,7 +196,7 @@ namespace boost { namespace polygon {
     }
 
     template <class iT>
-    inline void insert_vertex_sequence(iT begin_vertex, iT end_vertex, direction_1d winding, bool is_hole) {
+    inline void insert_vertex_sequence(iT begin_vertex, iT end_vertex, direction_1d winding, bool /*is_hole*/) {
       if (begin_vertex == end_vertex) {
         // No edges to insert.
         return;

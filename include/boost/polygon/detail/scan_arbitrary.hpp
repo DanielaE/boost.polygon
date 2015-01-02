@@ -647,14 +647,14 @@ namespace boost { namespace polygon{
         return false;
       }
       input.pop_back();
-      input.push_back(std::make_pair(half_edge(Point(1, 0), Point(11, 11)), input.size()));
+      input.push_back(std::make_pair(half_edge(Point(1, 0), Point(11, 11)), static_cast<int>(input.size())));
       edges.clear();
       validate_scan(edges, input.begin(), input.end());
       if(!verify_scan(result, edges.begin(), edges.end())) {
         stdcout << "s fail3 " << result.first << " " << result.second << "\n";
         return false;
       }
-      input.push_back(std::make_pair(half_edge(Point(1, 0), Point(10, 11)), input.size()));
+      input.push_back(std::make_pair(half_edge(Point(1, 0), Point(10, 11)), static_cast<int>(input.size())));
       edges.clear();
       validate_scan(edges, input.begin(), input.end());
       if(!verify_scan(result, edges.begin(), edges.end())) {
@@ -662,14 +662,14 @@ namespace boost { namespace polygon{
         return false;
       }
       input.pop_back();
-      input.push_back(std::make_pair(half_edge(Point(1, 2), Point(11, 11)), input.size()));
+      input.push_back(std::make_pair(half_edge(Point(1, 2), Point(11, 11)), static_cast<int>(input.size())));
       edges.clear();
       validate_scan(edges, input.begin(), input.end());
       if(!verify_scan(result, edges.begin(), edges.end())) {
         stdcout << "s fail5 " << result.first << " " << result.second << "\n";
         return false;
       }
-      input.push_back(std::make_pair(half_edge(Point(0, 5), Point(0, 11)), input.size()));
+      input.push_back(std::make_pair(half_edge(Point(0, 5), Point(0, 11)), static_cast<int>(input.size())));
       edges.clear();
       validate_scan(edges, input.begin(), input.end());
       if(!verify_scan(result, edges.begin(), edges.end())) {

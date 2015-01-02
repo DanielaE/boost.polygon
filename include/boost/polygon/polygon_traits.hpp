@@ -751,7 +751,7 @@ namespace boost { namespace polygon{
     }
     if(pts.back() == pts[0]) pts.pop_back();
     //iterate over point triplets
-    int numPts = pts.size();
+    int numPts = static_cast<int>(pts.size());
     bool wrap_around = false;
     for(int i = 0; i < numPts; ++i) {
       Point& pt1 = pts[i];
