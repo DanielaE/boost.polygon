@@ -193,9 +193,9 @@ namespace boost { namespace polygon{
   geometry_type_1& self_assignment_boolean_op(geometry_type_1& lvalue_, const geometry_type_2& rvalue_) {
     typedef geometry_type_1 ltype;
     typedef typename polygon_set_traits<ltype>::coordinate_type coordinate_type;
-    typedef polygon_set_data<coordinate_type> value_type;
-    value_type output_;
-    execute_boolean_op<value_type, geometry_type_1, geometry_type_2, op_type>(output_, lvalue_, rvalue_);
+    typedef polygon_set_data<coordinate_type> value_type_;
+    value_type_ output_;
+    execute_boolean_op<value_type_, geometry_type_1, geometry_type_2, op_type>(output_, lvalue_, rvalue_);
     polygon_set_mutable_traits<geometry_type_1>::set(lvalue_, output_.begin(), output_.end());
     return lvalue_;
   }
@@ -209,9 +209,9 @@ namespace boost { namespace polygon{
     // equivalence operator
   template <typename coordinate_type>
   inline bool polygon_set_data<coordinate_type>::operator==(const polygon_set_data<coordinate_type>& p) const {
-    typedef polygon_set_data<coordinate_type> value_type;
-    value_type output_;
-    execute_boolean_op<value_type, value_type, value_type, 2>(output_, (*this), p);  
+    typedef polygon_set_data<coordinate_type> value_type_;
+    value_type_ output_;
+    execute_boolean_op<value_type_, value_type_, value_type_, 2>(output_, (*this), p);  
     return output_.data_.empty();
   }
 

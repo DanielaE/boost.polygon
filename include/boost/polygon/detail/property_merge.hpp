@@ -283,14 +283,14 @@ private:
 //     }
   }
 
-  inline void processVertex(edge_property_vector& output) {
+  inline void processVertex(edge_property_vector& output_) {
     if(!countFromBelow.empty()) {
       //we are processing an interval of change in scanline state between
       //previous vertex position and current vertex position where
       //count from below represents the change on the interval
       //foreach scanline element from previous to current we
       //write the interval on the scanline that is changing
-      //the old value and the new value to output
+      //the old value and the new value to output_
       property_merge_interval<coordinate_type> currentInterval(previousY, currentVertex.first.y());
       coordinate_type currentY = currentInterval.low();
       if(scanlinePosition == scanline.end() ||
@@ -304,23 +304,23 @@ private:
         if(elementY <= currentInterval.high()) {
           property_map& countOnLeft = (*previousScanlinePosition).second;
           edge_property element;
-          output.push_back(element);
-          output.back().first = property_merge_interval<coordinate_type>((*previousScanlinePosition).first, elementY);
-          setProperty(output.back().second.first, countOnLeft);
+          output_.push_back(element);
+          output_.back().first = property_merge_interval<coordinate_type>((*previousScanlinePosition).first, elementY);
+          setProperty(output_.back().second.first, countOnLeft);
           mergeCount(countOnLeft, countFromBelow);
-          setProperty(output.back().second.second, countOnLeft);
-          if(output.back().second.first == output.back().second.second) {
-            output.pop_back(); //it was an internal vertical edge, not to be output
+          setProperty(output_.back().second.second, countOnLeft);
+          if(output_.back().second.first == output_.back().second.second) {
+            output_.pop_back(); //it was an internal vertical edge, not to be output
           }
-          else if(output.size() > 1) {
-            edge_property& secondToLast = output[output.size()-2];
-            if(secondToLast.first.high() == output.back().first.low() &&
-               secondToLast.second.first == output.back().second.first &&
-               secondToLast.second.second == output.back().second.second) {
-              //merge output onto previous output because properties are
+          else if(output_.size() > 1) {
+            edge_property& secondToLast = output_[output_.size()-2];
+            if(secondToLast.first.high() == output_.back().first.low() &&
+               secondToLast.second.first == output_.back().second.first &&
+               secondToLast.second.second == output_.back().second.second) {
+              //merge output_ onto previous output_ because properties are
               //identical on both sides implying an internal horizontal edge
-              secondToLast.first.high(output.back().first.high());
-              output.pop_back();
+              secondToLast.first.high(output_.back().first.high());
+              output_.pop_back();
             }
           }
           if(previousScanlinePosition == scanline.begin()) {
@@ -368,9 +368,9 @@ private:
         scanline.insert(scanline.end(), elementScan);
 
         edge_property element;
-        output.push_back(element);
-        output.back().first = property_merge_interval<coordinate_type>(currentY, currentInterval.high());
-        setProperty(output.back().second.second, countFromBelow);
+        output_.push_back(element);
+        output_.back().first = property_merge_interval<coordinate_type>(currentY, currentInterval.high());
+        setProperty(output_.back().second.second, countFromBelow);
         mergeCount(countFromBelow, currentVertex.second);
       } else {
         mergeCount(countFromBelow, currentVertex.second);
