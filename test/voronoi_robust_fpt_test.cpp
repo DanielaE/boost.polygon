@@ -319,7 +319,7 @@ class sqrt_expr_tester {
     for (std::size_t i = 0; i < mask; i++) {
       fpt64 expected_val = 0.0;
       for (std::size_t j = 0; j < MX_SQRTS; j++) {
-        if (i & (1 << j)) {
+        if (i & (static_cast<std::size_t>(1) << j)) {
           A[j] = a[j];
           B[j] = b[j];
           expected_val += static_cast<fpt64>(a[j]) *
