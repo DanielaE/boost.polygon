@@ -150,7 +150,7 @@ namespace boost { namespace polygon{
     //       return o;
     //     }
 
-    class lessScan45ElementRise : public std::binary_function<Scan45Element, Scan45Element, bool> {
+    class lessScan45ElementRise {
     public:
       inline lessScan45ElementRise() {} //default constructor is only constructor
       inline bool operator () (Scan45Element elm1, Scan45Element elm2) const {
@@ -457,7 +457,7 @@ namespace boost { namespace polygon{
         return Scan45Element(vertex.first.x(), vertex.first.y(), index - 1, vertex.second[index]);
       }
 
-      class lessScan45Point : public std::binary_function<Point, Point, bool> {
+      class lessScan45Point {
       public:
         inline lessScan45Point() {} //default constructor is only constructor
         inline bool operator () (const Point& v1, const Point& v2) const {

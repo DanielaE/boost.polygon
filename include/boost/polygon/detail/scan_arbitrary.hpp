@@ -316,7 +316,7 @@ namespace boost { namespace polygon{
       return true;
     }
 
-    class less_point_down_slope : public std::binary_function<Point, Point, bool> {
+    class less_point_down_slope {
     public:
       inline less_point_down_slope() {}
       inline bool operator () (const Point& pt1, const Point& pt2) const {

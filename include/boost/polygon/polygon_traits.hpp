@@ -1183,7 +1183,7 @@ namespace boost { namespace polygon{
     typedef point_data<Unit> Point;
     typedef std::pair<Point, Point> half_edge;
 
-    class less_point : public std::binary_function<Point, Point, bool> {
+    class less_point {
     public:
       inline less_point() {}
       inline bool operator () (const Point& pt1, const Point& pt2) const {
